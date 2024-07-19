@@ -27,5 +27,689 @@ The university keeps detailed records of all financial transactions.
 # The Entity Relationship Diagram (ERD)
 ![Entity Relationship Diagram Image](Academic_Institution_Diagram.png)
 
-##    The link to a diagram:
-###     https://dbdiagram.io/d/669905b58b4bb5230eb34266
+## The link to a diagram:
+### https://dbdiagram.io/d/669905b58b4bb5230eb34266
+
+# Detail Entites Diagram
+### The database consists of 45 separate entities to meet the university's database system needs.
+
+```
+Table Students {
+  StudentID int [pk]
+  FirstName varchar [not null]
+  LastName varchar [not null]
+  DateOfBirth date [not null]
+  Email varchar [unique, not null]
+  PhoneNumber varchar [not null]
+  NationalID varchar [unique, not null]
+  CurrentAddress varchar [not null]
+  PermanentAddress varchar [not null]
+  ProgramID int [ref: > Programs.ProgramID, not null]
+}
+```
+
+```
+Table Faculties {
+  FacultyID int [pk]
+  FacultyName varchar [not null]
+}
+```
+
+```
+Table Departments {
+  DepartmentID int [pk]
+  DepartmentName varchar [not null]
+  FacultyID int [ref: > Faculties.FacultyID, not null]
+}
+```
+
+```
+Table DepartmentStaff {
+  StaffID int [pk]
+  FirstName varchar [not null]
+  LastName varchar [not null]
+  Email varchar [unique, not null]
+  PhoneNumber varchar [not null]
+  Title varchar [not null]
+  PaySalary float [not null]
+  PayFrequency varchar [not null]
+  DepartmentID int [ref: > Departments.DepartmentID, not null]
+}
+```
+
+```
+Table Programs {
+  ProgramID int [pk]
+  ProgramName varchar [not null]
+  Degree varchar [not null]
+  DepartmentID int [ref: > Departments.DepartmentID, not null]
+}
+```
+
+```
+Table Courses {
+  CourseID int [pk]
+  CourseName varchar [not null]
+  Description varchar [null]
+  Credits varchar [not null]
+  ProgramID int [ref: > Programs.ProgramID, not null]
+  LearningOutcomesID int [ref: > LearningOutcomes.LearningOutcomesID, not null]
+}
+```
+
+```
+Table CourseMaterials {
+  MaterialID int [pk]
+  MaterialType varchar [not null]
+  Description varchar [null]
+  FilePath varchar [not null]
+  CourseID int [ref: > Courses.CourseID, not null]
+}
+```
+
+```
+Table LearningOutcomes {
+  LearningOutcomesID int [pk]
+  Description varchar [null]
+  CourseID int [ref: > Courses.CourseID, not null]
+}
+```
+
+```
+Table CourseOfferings {
+  CourseOfferingID int [pk]
+  Semester varchar [not null]
+  Year year [not null]
+  CourseID int [ref: > Courses.CourseID, not null]
+  ProgramID int [ref: > Programs.ProgramID, not null]
+}
+```
+
+```
+Table Enrollments {
+  EnrollmentID int [pk]
+  StudentID int [ref: > Students.StudentID, not null]
+  CourseID int [ref: > Courses.CourseID, not null]
+  Semester varchar [not null]
+  Year year [not null]
+}
+```
+
+```
+Table Evaluations {
+  EvaluationID int [pk]
+  EvaluationType varchar [not null]
+  Weight float [not null]
+  Score float [not null]
+  EnrollmentID int [ref: > Enrollments.EnrollmentID, not null]
+}
+```
+
+```
+Table EvaluationDetails {
+  EvaluationDetailID int [pk]
+  DueDate date [not null]
+  Rubric varchar [not null]
+  EvaluationID int [ref: > Evaluations.EvaluationID, not null]
+}
+```
+
+```
+Table Transcripts {
+  TranscriptID int [pk]
+  Grade float [not null]
+  StudentID int [ref: > Students.StudentID, not null]
+  EnrollmentID int [ref: > Enrollments.EnrollmentID, not null]
+}
+```
+
+```
+Table Grants {
+  GrantID int [pk]
+  GrantingAgency varchar [not null]
+  Amount float [not null]
+  StartDate datetime [not null]
+  EndDate datetime [not null]
+}
+```
+
+```
+Table ResearchProjects {
+  ProjectID int [pk]
+  ProjectTitle varchar [not null]
+  Description varchar [null]
+  DepartmentID int [ref: > Departments.DepartmentID, not null]
+  GrantID int [ref: > Grants.GrantID, not null]
+}
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
+
+```
+```
