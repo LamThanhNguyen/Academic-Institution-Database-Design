@@ -25,4 +25,4 @@ The university manages finances including tuition, scholarships for students and
 The university keeps detailed records of all financial transactions.
 
 # The Entity Relationship Diagram (ERD)
-/assets/images/Academic_Institution_Schema.png
+(/assets/images/Academic_Institution_Schema.png)
