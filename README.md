@@ -4,8 +4,8 @@ Academic Institution Database, Database Design, Schema
 # Introduction and Overview of the database design
 My database meets the needs of storing and managing a large amount of data for a famous university in Vietnam.
 
-The university offers undergraduate and graduate programs across many faculties.
-Each faculty has a teaching staff consisting of professors, lecturers and teaching assistants.
+The university offers undergraduate and graduate programs across numerous departments.
+Each department houses a faculty body comprising professors, lecturers, and teaching assistants.
 These faculty members conduct a variety of courses, each of which has a set of learning outcomes, a syllabus, and a grading scheme.
 Students can enroll in multiple courses per semester and are evaluated based on their performance in assignments, quizzes, exams, and projects.
 
@@ -23,3 +23,6 @@ The university's facilities include multiple buildings, classrooms, laboratories
 
 The university manages finances including tuition, scholarships for students and payroll for faculty and staff.
 The university keeps detailed records of all financial transactions.
+
+# The Entity Relationship Diagram (ERD)
+/assets/images/Academic_Institution_Schema.png
