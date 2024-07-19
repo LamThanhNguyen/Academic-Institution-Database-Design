@@ -184,532 +184,301 @@ Table ResearchProjects {
 ```
 
 ```
+Table Publications {
+  PublicationID int [pk]
+  Title varchar [not null]
+  PublicationType varchar [not null]
+  PublicationDate varchar [not null]
+  Authors varchar [not null]
+  ProjectID int [ref: > ResearchProjects.ProjectID, not null]
+}
 ```
 
 ```
+Table PublicationDetails {
+  PublicationDetailID int [pk]
+  PublicationVenue varchar [not null]
+  DOI varchar [not null]
+  PublicationID int [ref: > Publications.PublicationID, not null]
+}
 ```
 
 ```
+Table Authors {
+  AuthorID int [pk]
+  FirstName varchar [not null]
+  LastName varchar [not null]
+  Title varchar [not null]
+}
 ```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
 
 ```
+Table Publications_Authors {
+  PublicationAuthorID int [pk]
+  PublicationID int [ref: > Publications.PublicationID, not null]
+  AuthorID int [ref: > Authors.AuthorID, not null]
+}
 ```
 
 ```
+Table SupportServices {
+  SupportServiceID int [pk]
+  ServiceName varchar [not null]
+  Description varchar [null]
+  ContactInfo varchar [not null]
+  Website varchar [null]
+  CategoryService varchar [not null]
+}
 ```
 
-```
-```
 ```
+Table StudentResourceInteractions {
+  InteractionID int [pk]
+  InteractionDate varchar [not null]
+  Details varchar [not null]
+  StudentID int [ref: > Students.StudentID, not null]
+  SupportServiceID int [ref: > SupportServices.SupportServiceID, not null]
+}
 ```
 
 ```
+Table TutoringSessions {
+  SessionID int [pk]
+  Subject varchar [not null]
+  Date date [not null]
+  Duration varchar [not null]
+  Notes varchar [null]
+  SupportServiceID int [ref: > SupportServices.SupportServiceID, not null]
+  StudentID int [ref: > Students.StudentID, not null]
+}
 ```
 
 ```
+Table CounselingAppointments {
+  AppointmentID int [pk]
+  AppointmentType varchar [not null]
+  Counselor varchar [not null]
+  Date date [not null]
+  Duration varchar [not null]
+  Notes varchar [null]
+  SupportServiceID int [ref: > SupportServices.SupportServiceID, not null]
+  StudentID int [ref: > Students.StudentID, not null]
+}
 ```
 
 ```
+Table MentalHealthSupport {
+  SupportID int [pk]
+  SupportType varchar [not null]
+  Topic varchar [not null]
+  Date date [not null]
+  Duration varchar [not null]
+  Notes varchar [null]
+  SupportServiceID int [ref: > SupportServices.SupportServiceID, not null]
+  StudentID int [ref: > Students.StudentID, not null]
+}
 ```
 
 ```
+Table LibraryResources {
+  LibraryResourceID int [pk]
+  Title varchar [not null]
+  Author varchar [not null]
+  Publisher varchar [not null]
+  PublicationDate date [not null]
+  Description varchar [null]
+  Type varchar [not null]
+  Format varchar [not null]
+  AccessLink varchar [null]
+  Location varchar [null]
+}
 ```
 
 ```
+Table StudentOrganizations {
+  OrganizationID int [pk]
+  OrganizationName varchar [not null]
+  Description varchar [null]
+  DepartmentID int [ref: > Departments.DepartmentID, not null]
+}
 ```
 
 ```
+Table StudentMemberships {
+  MembershipID int [pk]
+  Role varchar [not null]
+  StudentID int [ref: > Students.StudentID, not null]
+  OrganizationID int [ref: > StudentOrganizations.OrganizationID, not null]
+}
 ```
 
 ```
+Table Clubs {
+  ClubID int [pk]
+  ClubFocus varchar [not null]
+  MeetingFrequency varchar [not null]
+  MeetingLocation varchar [not null]
+  OrganizationID int [ref: > StudentOrganizations.OrganizationID, not null]
+}
 ```
 
 ```
+Table SportsTeams {
+  SportsTeamID int [pk]
+  Sport varchar [not null]
+  Coach varchar [null]
+  PracticeSchedule varchar [not null]
+  OrganizationID int [ref: > StudentOrganizations.OrganizationID, not null]
+}
 ```
-```
-```
 
 ```
+Table Buildings {
+  BuildingID int [pk]
+  BuildingName varchar [not null]
+  Address varchar [not null]
+  Description varchar [null]
+}
 ```
 
 ```
+Table Facilities {
+  FacilityID int [pk]
+  FacilityType varchar [not null]
+  Capacity varchar [not null]
+  BuildingID int [ref: > Buildings.BuildingID, not null]
+}
 ```
 
 ```
+Table Classrooms {
+  ClassroomID int [pk]
+  RoomNumber varchar [not null]
+  AccessibilityFeatures varchar [null]
+}
 ```
 
 ```
+Table Laboratories {
+  LabID int [pk]
+  LabName varchar [not null]
+  Equipment varchar [not null]
+  MaintenanceSchedule varchar [null]
+}
 ```
 
 ```
+Table Offices {
+  OfficeID int [pk]
+  RoomNumber varchar [not null]
+  Occupant varchar [null]
+}
 ```
 
 ```
+Table CommonAreas {
+  CommonAreaID int [pk]
+  CommonAreaType varchar [not null]
+  Amenities varchar [null]
+}
 ```
 
 ```
+Table Equipment {
+  EquipmentID int [pk]
+  EquipmentName varchar [not null]
+  ModelNumber varchar [not null]
+  SerialNumber varchar [not null]
+  PurchaseDate varchar [not null]
+  LabID int [ref: > Laboratories.LabID, not null]
+}
 ```
 
-```
-```
 ```
+Table RoomReservations {
+  ReservationID int [pk]
+  ReservationDate varchar [not null]
+  StartTime varchar [not null]
+  EndTime varchar [not null]
+  ReservedBy varchar [not null]
+  Purpose varchar [not null]
+  FacilityID int [ref: > Facilities.FacilityID, not null]
+  RequestedByUserID int [ref: > UserAccounts.UserID, not null]
+}
 ```
 
 ```
+Table UserAccounts {
+  UserID int [pk]
+  Username varchar [unique, not null]
+  Password varchar [not null]
+  Email varchar [unique, not null]
+  StudentID int [ref: > Students.StudentID, null]
+  DepartmentStaffID int [ref: > DepartmentStaff.StaffID, null]
+}
 ```
 
 ```
+Table UserRoles {
+  UserRoleID int [pk]
+  UserRoleName varchar [unique, not null]
+}
 ```
 
 ```
+Table UserRolesLink {
+  UserRolesLinkID int [pk]
+  UserID int [ref: > UserAccounts.UserID, not null]
+  UserRoleID int [ref: > UserRoles.UserRoleID, not null]
+}
 ```
 
 ```
+Table FinancialAccounts {
+  AccountID int [pk]
+  AccountName varchar [unique, not null]
+  AccountType varchar [not null]
+}
 ```
 
 ```
+Table TuitionFees {
+  TuitionFeeID int [pk]
+  AcademicYear varchar [not null]
+  Amount float [not null]
+  ProgramID int [ref: > Programs.ProgramID, not null]
+}
 ```
 
 ```
+Table Scholarships {
+  ScholarshipID int [pk]
+  ScholarshipName varchar [not null]
+  Description varchar [null]
+  FundingAccountID int [ref: > FinancialAccounts.AccountID, not null]
+}
 ```
 
 ```
+Table StudentFinancialAid {
+  StudentFinancialAidID int [pk]
+  AwardAmount float [not null]
+  Semester varchar [not null]
+  StudentID int [ref: > Students.StudentID, not null]
+  ScholarshipID int [ref: > Scholarships.ScholarshipID, not null]
+}
 ```
 
 ```
+Table FinancialTransactions {
+  TransactionID int [pk]
+  TransactionDate datetime [not null]
+  Amount float [not null]
+  Description varchar [null]
+  FromAccountID int [ref: > FinancialAccounts.AccountID, null]
+  ToAccountID int [ref: > FinancialAccounts.AccountID, null]
+  StudentID int [ref: > Students.StudentID, null]
+  DepartmentStaffID int [ref: > DepartmentStaff.StaffID, null]
+  ScholarshipID int [ref: > Scholarships.ScholarshipID, null]
+}
 ```
