@@ -1,7 +1,15 @@
-# Academic-Institution-Database-Design
+# Academic Institution Database Design
 Academic Institution Database, Database Design, Schema
 
-# Introduction and Overview of the database design
+## 📑 Table of Contents
+- [Introduction and Overview of the database design](#introduction-and-overview-of-the-database-design)
+- [The Entity Relationship Diagram](#the-entity-relationship-diagram)
+- [Detail Entites Diagram](#detail-entites-diagram)
+- [Relationships Between Entities](#relationships-between-entities)
+- [Common Queries](#common-queries)
+- [Conclusion](#conclusion)
+
+## Introduction and Overview of the database design
 My database meets the needs of storing and managing a large amount of data for a famous university in Vietnam.
 
 The university offers undergraduate and graduate programs across numerous departments.
@@ -24,13 +32,13 @@ The university's facilities include multiple buildings, classrooms, laboratories
 The university manages finances including tuition, scholarships for students and payroll for faculty and staff.
 The university keeps detailed records of all financial transactions.
 
-# The Entity Relationship Diagram (ERD)
+## The Entity Relationship Diagram
 ![Entity Relationship Diagram Image](Academic_Institution_Diagram.png)
 
-## The link to a diagram:
+### The link to a diagram:
 ### https://dbdiagram.io/d/669905b58b4bb5230eb34266
 
-# Detail Entites Diagram
+## Detail Entites Diagram
 ### The database consists of 45 separate entities to meet the university's database system needs.
 
 ```
@@ -483,7 +491,7 @@ Table FinancialTransactions {
 }
 ```
 
-# Relationships Between Entities
+## Relationships Between Entities
 * Table Students:
   * Programs: A student is enrolled in exactly one program.
     * Type: Many-to-One (Many students to one program)
@@ -834,7 +842,7 @@ Table FinancialTransactions {
     * Type: Many-to-One (Many financial transactions to one scholarship)
     * Cardinality: Many Financial Transactions can involve one Scholarship (1 ScholarshipID in FinancialTransactions table referencing 1 ScholarshipID in Scholarships table).
 
-# Common Queries
+## Common Queries
 
 Query: "List all students enrolled in a specific course, along with their grades"
 ```
@@ -968,5 +976,5 @@ WHERE rp.Title = 'Developing a new solar cell technology';
 GROUP BY p.PublicationID, p.Title, p.PublicationDate;
 ```
 
-# Conclusion
+## Conclusion
 Above is brief information about the database system that meets the needs of a university. Thank you for your interest.
