@@ -35,8 +35,8 @@ The university keeps detailed records of all financial transactions.
 ## The Entity Relationship Diagram
 ![Entity Relationship Diagram Image](Academic_Institution_Diagram.png)
 
-### * The link to a diagram:
-### ** https://dbdiagram.io/d/669905b58b4bb5230eb34266
+  * ### The link to a diagram:
+    * ### https://dbdiagram.io/d/669905b58b4bb5230eb34266
 
 ## Detail Entites Diagram
 ### The database consists of 45 separate entities to meet the university's database system needs.
