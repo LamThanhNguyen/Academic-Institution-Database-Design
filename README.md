@@ -844,7 +844,7 @@ Table FinancialTransactions {
 
 ## Common Queries
 
-Query: "List all students enrolled in a specific course, along with their grades"
+- **Query: "List all students enrolled in a specific course, along with their grades"**
 ```
 SELECT s.FirstName, s.LastName, t.Grade
 FROM Students s
@@ -855,7 +855,7 @@ AND e.Semester = 'Fall'
 AND e.Year = 2024;
 ```
 
-Query: "Find all publications authored by a particular professor in the last five years"
+- **Query: "Find all publications authored by a particular professor in the last five years"**
 ```
 SELECT p.Title, p.PublicationDate
 FROM Publications p
@@ -867,7 +867,7 @@ AND aut.Title = 'professor'
 AND p.PublicationDate >= DATE_SUB(CURDATE(), INTERVAL 5 YEAR);
 ```
 
-Query: "Calculate the average GPA of students in a specific major"
+- **Query: "Calculate the average GPA of students in a specific major"**
 ```
 SELECT p.ProgramName AS Major, AVG(tr.Grade) AS AverageGPA
 FROM Students s
@@ -879,7 +879,7 @@ WHERE p.ProgramName = 'Software Technology'
 GROUP BY p.ProgramName;
 ```
 
-Query: "Retrieve the schedule of courses offered by a department in a given semester"
+- **Query: "Retrieve the schedule of courses offered by a department in a given semester"**
 ```
 SELECT c.CourseName, co.Semester, co.Year
 FROM Courses c
@@ -890,7 +890,7 @@ WHERE d.DepartmentName = 'Computer Science'
 AND co.Semester = 'Spring';
 ```
 
-Query: "Identify students who have utilized specific support services"
+- **Query: "Identify students who have utilized specific support services"**
 ```
 SELECT s.FirstName, s.LastName
 FROM Students s
@@ -899,7 +899,7 @@ INNER JOIN SupportServices ss ON sri.SupportServiceID = ss.SupportServiceID
 WHERE ss.ServiceName = 'Tutoring System Security Subjects';
 ```
 
-Query: "Retrieve a list of faculty members in a specific department"
+- **Query: "Retrieve a list of faculty members in a specific department"**
 ```
 SELECT ds.StaffID, ds.FirstName, ds.LastName, f.FacultyName
 FROM DepartmentStaff ds
@@ -908,7 +908,7 @@ INNER JOIN Faculties f ON d.FacultyID = f.FacultyID
 WHERE f.FacultyName = 'Mathematics';
 ```
 
-Query: "Search for library resources by title or author"
+- **Query: "Search for library resources by title or author"**
 ```
 SELECT Title, Author
 FROM LibraryResources
@@ -916,7 +916,7 @@ WHERE Title LIKE '%Data Structures and Algorithms%'
 OR Author LIKE '%Clifford Stein%';
 ```
 
-Query: "List all scholarships awarded to students in a specific program for a particular semester"
+- **Query: "List all scholarships awarded to students in a specific program for a particular semester"**
 ```
 SELECT s.FirstName, s.LastName, sc.ScholarshipName
 FROM Students s
@@ -929,7 +929,7 @@ AND e.Semester = 'Spring'
 AND e.Year = 2023;
 ```
 
-Query: "Retrieve a list of student organizations within a particular department"
+- **Query: "Retrieve a list of student organizations within a particular department"**
 ```
 SELECT so.OrganizationName, d.DepartmentName
 FROM StudentOrganizations so
@@ -937,7 +937,7 @@ INNER JOIN Departments d ON so.DepartmentID = d.DepartmentID
 WHERE d.DepartmentName = 'Engineering';
 ```
 
-Query: "Find all downloadable materials for a specific course"
+- **Query: "Find all downloadable materials for a specific course"**
 ```
 SELECT c.CourseName, cm.MaterialType, cm.FilePath
 FROM Courses c
@@ -946,7 +946,7 @@ WHERE c.CourseName = 'Introduction to Database Systems'
 AND cm.MaterialType = 'PDF';
 ```
 
-Query: "Find out which support services a specific student has utilized by student id."
+- **Query: "Find out which support services a specific student has utilized by student id."**
 ```
 SELECT ss.ServiceName, sri.InteractionDate
 FROM StudentResourceInteractions sri
@@ -955,7 +955,7 @@ INNER JOIN Students s ON sri.StudentID = s.StudentID
 WHERE s.StudentID = 24001458;
 ```
 
-Query: "Identify students with an average GPA above a certain threshold"
+- **Query: "Identify students with an average GPA above a certain threshold"**
 ```
 SELECT s.FirstName, s.LastName, AVG(t.Grade) AS AverageGPA
 FROM Students s
@@ -965,7 +965,7 @@ GROUP BY s.StudentID, s.FirstName, s.LastName
 HAVING AVG(t.Grade) > 3.9;
 ```
 
-Query: "List all publications associated with a specific research project"
+- **Query: "List all publications associated with a specific research project"**
 ```
 SELECT p.Title AS PublicationTitle, p.PublicationDate, GROUP_CONCAT(a.FirstName, ' ', a.LastName SEPARATOR ', ') AS Authors
 FROM Publications p
